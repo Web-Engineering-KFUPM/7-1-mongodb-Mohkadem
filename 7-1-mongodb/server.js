@@ -170,22 +170,23 @@
 import mongoose from "mongoose";
 
 // establish connection
-
-
+async function connectDB() {
+  try {
+    await mongoose.connect(
+      "mongodb+srv://Moh:Mohammed32@cluster0.fh3r59n.mongodb.net/"
+    );
+    console.log("Connected");
+  } catch (err) {
+    console.log("Error:", err);
+  }
+}
+connectDB();
 // define schema
-
 
 // create document
 
-
 // read document
-
 
 // update document
 
-
 // delete document
-
-
-
-
