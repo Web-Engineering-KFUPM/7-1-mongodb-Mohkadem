@@ -181,8 +181,22 @@ async function connectDB() {
   }
 }
 connectDB();
+//  * TODO-2 Define the schema of the DB
+//  * =====================================================
+//  *    const studentSchema = new mongoose.Schema({
+//          name: String,
+//          age: Number,
+//          major: String
+//       });
+//       const Student = mongoose.model("Student", studentSchema);
+//       - Run server: node server.js and go to mongo cloud to see DB schema in test->students.
 // define schema
-
+const studentSchema = new mongoose.Schema({
+  name: String,
+  age: Number,
+  major: String,
+});
+const Student = mongoose.model("Student", studentSchema);
 // create document
 
 // read document
