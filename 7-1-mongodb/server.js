@@ -173,7 +173,7 @@ import mongoose from "mongoose";
 async function connectDB() {
   try {
     await mongoose.connect(
-      "mongodb+srv://Moh:Mohammed32@cluster0.fh3r59n.mongodb.net/"
+      "mongodb+srv://Moh:Mohammed32@cluster0.fh3r59n.mongodb.net/labDB"
     );
     console.log("Connected");
   } catch (err) {
@@ -181,24 +181,22 @@ async function connectDB() {
   }
 }
 connectDB();
-//  * TODO-2 Define the schema of the DB
-//  * =====================================================
-//  *    const studentSchema = new mongoose.Schema({
-//          name: String,
-//          age: Number,
-//          major: String
-//       });
-//       const Student = mongoose.model("Student", studentSchema);
-//       - Run server: node server.js and go to mongo cloud to see DB schema in test->students.
-// define schema
+
 const studentSchema = new mongoose.Schema({
   name: String,
   age: Number,
   major: String,
 });
-const Student = mongoose.model("Student", studentSchema);
+const Student = mongoose.model("Students", studentSchema, "Students");
 // create document
-
+async function createStudents() {
+  await Student.insertMany([
+    { name: "Ali", age: 21, major: "CS" },
+    { name: "Sara", age: 23, major: "SE" },
+  ]);
+  console.log("✅ Inserted");
+}
+createStudents();
 // read document
 
 // update document
